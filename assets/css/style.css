@@ -1,0 +1,383 @@
+:root{
+  --cream:#fff5f0; --paper:#fffdfc; --text:#2b2b3a; --muted:#7e7e92;
+  --accent:#ff8aa1; --rose:#ffd9e3; --leaf:#b7e3c3;
+  --shadow: 0 20px 70px rgba(0,0,0,.12); --r:22px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--text);
+  font-family: ui-serif, Georgia, "Times New Roman", ui-sans-serif, system-ui;
+  background: linear-gradient(180deg, var(--cream), #fff);
+}
+
+/* Cadre pastel */
+.frame{position:fixed; inset:0; pointer-events:none; z-index:0;
+  border:42px solid rgba(255,228,232,.45);}
+
+/* Topbar */
+.topbar{
+  position:sticky; top:0; z-index:5;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:14px 24px;
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.7));
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(0,0,0,.04);
+}
+.brand{font-weight:800}
+.nav{display:flex; gap:16px; flex-wrap:wrap}
+.nav a{color:var(--muted); text-decoration:none; font-size:14px}
+.nav a:hover{color:var(--text)}
+
+.section{max-width:1150px; margin: clamp(16px,4vw,28px) auto; padding: clamp(16px,3vw,24px); position:relative; z-index:1}
+.card{background:var(--paper); border-radius:var(--r); box-shadow:var(--shadow); border:1px solid rgba(0,0,0,.04)}
+.hint{color:var(--muted); font-size:12px}
+
+/* HERO */
+.hero .hero-wrap{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(16px,4vw,28px); align-items:center;
+}
+@media (max-width: 980px){ .hero .hero-wrap{ grid-template-columns:1fr } }
+.title{
+  font-size: clamp(42px, 7.5vw, 84px);
+  line-height:.92; margin:0 0 8px; color:#23304a; font-weight:800;
+}
+.lead{color:var(--muted); margin:10px 0 16px; max-width:50ch}
+.btn{
+  appearance:none; border:0; border-radius:999px; padding:12px 20px; font-weight:700; cursor:pointer;
+  background: var(--accent); color:#fff; box-shadow:0 12px 28px rgba(255,138,161,.25); transition:transform .15s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent; color:#23304a; border:1px solid rgba(0,0,0,.08)}
+.scroll-hint{text-align:center; color:var(--muted); margin-top:12px}
+
+.hero-left{padding: clamp(18px,3.2vw,26px)}
+.hero-ill{position:relative; padding: clamp(10px,2.4vw,18px); overflow:hidden; min-height: 340px}
+.hero-ill img{width:100%; height:auto; display:block; border-radius: 18px}
+
+/* Feuilles décoratives */
+.leaf{position:absolute; border-radius:40px; filter: blur(.5px); opacity:.9}
+.leaf-a{width:180px; height:140px; background: var(--leaf); bottom:-18px; left:-10px; transform: rotate(-12deg)}
+.leaf-b{width:120px; height:120px; background:#ffd28d; top:12px; right:-18px; transform: rotate(18deg)}
+.leaf-c{width:160px; height:120px; background: var(--rose); bottom:20px; right:10px; transform: rotate(-6deg)}
+
+/* MESSAGE */
+.message .message-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px}
+.message h2{margin:0}
+.actions{display:flex; gap:8px}
+.editable{
+  min-height:160px; padding:16px; border-radius:16px; outline:none; white-space:pre-wrap;
+  background:#fff; border:1px dashed rgba(0,0,0,.12);
+}
+.editable.readonly{background:#fffefc}
+
+/* DÉCOMPTE */
+.countdown{display:grid; grid-template-columns: 1fr .9fr; gap: clamp(12px,3vw,22px); align-items:center}
+@media (max-width: 900px){ .countdown{ grid-template-columns:1fr } }
+.count-left .hl{color:#e3568b}
+.muted{color:var(--muted)}
+.stat-grid{display:grid; grid-template-columns: repeat(4, minmax(90px,1fr)); gap:12px; margin-top:12px}
+.stat{background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:14px; padding:14px; text-align:center; transition: transform .2s}
+.stat div{font-size:30px; font-weight:900; color:#23304a}
+.stat span{font-size:12px; color:var(--muted)}
+
+.count-right{position:relative; min-height:240px}
+.ring{position:absolute; border-radius:50%; border:1px dashed rgba(0,0,0,.08)}
+.r1{width:160px; height:160px; top:18px; left:26px}
+.r2{width:220px; height:220px; top:0; left:60px}
+.r3{width:280px; height:280px; top:-24px; left:100px}
+.bubble{position:absolute; background:var(--rose); border-radius:50%; filter: blur(2px); opacity:.9}
+.b1{width:30px; height:30px; top:20px; left:200px; animation: float 6s ease-in-out infinite}
+.b2{width:46px; height:46px; top:140px; left:260px; animation: float 7s ease-in-out infinite}
+.b3{width:22px; height:22px; top:80px; left:120px; animation: float 5.5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(-4px)}50%{transform:translateY(6px)}}
+
+/* GALERIE */
+.gallery h2{margin:0 0 8px}
+.gallery .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+@media (max-width: 880px){ .gallery .grid{ grid-template-columns: repeat(2,1fr)} }
+.ph{position:relative; border-radius:16px; overflow:hidden; height:220px; background:#fff; border:1px solid rgba(0,0,0,.06); transform: translateY(16px); opacity:0}
+.ph img{width:100%; height:100%; object-fit:cover; transform:scale(1.06); transition: transform .6s ease, filter .3s ease}
+.ph:hover img{transform:scale(1.12); filter:contrast(1.05) saturate(1.06)}
+.lightbox{position:fixed; inset:0; background:rgba(0,0,0,.6); display:grid; place-items:center; opacity:0; visibility:hidden; transition:.2s; z-index:10}
+.lightbox.show{opacity:1; visibility:visible}
+.lightbox img{max-width:min(92vw,1100px); max-height:86vh; border-radius:16px; border:1px solid rgba(255,255,255,.45); box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.lb-close{position:absolute; top:24px; right:24px; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.5); background:rgba(255,255,255,.15); color:#fff; cursor:pointer; font-size:22px}
+
+/* EXCUSES */
+.excuses .excuses-wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
+@media (max-width: 900px){ .excuses .excuses-wrap{ grid-template-columns:1fr } }
+.editor{margin-top:8px}
+.editor .editable{background:#fff; border:1px dashed rgba(0,0,0,.12)}
+.editor-actions{display:flex; gap:8px; margin-top:8px}
+.note{
+  position:relative; margin:16px 0; padding:14px 16px; border-radius:14px;
+  background: linear-gradient(180deg, #fff, #fff9f7);
+  border:1px solid rgba(0,0,0,.08); box-shadow: var(--shadow);
+}
+.n1{transform: rotate(-1.5deg)} .n2{transform: rotate(1.5deg)} .n3{transform: rotate(-.5deg)}
+
+/* REVEAL on scroll */
+[data-anim]{opacity:0; transform: translateY(24px)}
+.reveal{opacity:1 !important; transform:none !important; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+.ph.reveal{opacity:1; transform:none}
+
+/* Footer */
+.footer{padding:30px 16px 50px; text-align:center; color:var(--muted)}
+
+/* === Overrides proportions & images (coller en bas) === */
+
+/* Conteneur global un peu plus large mais centré */
+.section{
+  max-width: 1200px;
+}
+
+/* HERO : grille et limites visuelles */
+.hero .hero-wrap{
+  grid-template-columns: minmax(420px, 0.92fr) minmax(380px, 0.88fr);
+  align-items: center;
+}
+@media (max-width: 1100px){
+  .hero .hero-wrap{ grid-template-columns: 1fr; }
+}
+
+/* Titre un peu plus compact pour équilibrer */
+.title{
+  font-size: clamp(40px, 7vw, 72px);
+}
+
+/* Bloc image du hero : ratio fixe + cap sur la taille */
+.hero-ill{
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: clamp(8px, 1.8vw, 14px);
+  /* empêche l'image de devenir plus grande que la feuille */
+  max-width: min(560px, 45vw);
+  justify-self: end;
+}
+@media (max-width: 1100px){
+  .hero-ill{ max-width: 720px; justify-self: stretch; }
+}
+
+/* Inner avec ratio et arrondi */
+.hero-ill-inner{
+  width: 100%;
+  aspect-ratio: 4 / 5;           /* ratio élégant vertical */
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}
+.hero-ill-inner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* remplissage propre sans déformer */
+  display: block;
+}
+
+/* Feuilles : restent sous l'image et ne débordent pas */
+.leaf{ z-index: 0; }
+.hero-ill-inner{ z-index: 1; }
+
+/* DÉCOMPTE : empêche les bulles de pousser la carte */
+.countdown{ overflow: hidden; }
+
+/* GALERIE : carrés propres qui n'étirent pas la page */
+.gallery .grid{
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 14px;
+}
+@media (max-width: 940px){
+  .gallery .grid{ grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+}
+.ph{
+  height: auto;                  /* géré par aspect-ratio */
+  aspect-ratio: 1 / 1;           /* vignettes carrées */
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  transform: translateY(16px);
+  opacity: 0;
+}
+.ph img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* jamais étiré */
+  display: block;
+  transform: scale(1.04);
+  transition: transform .6s ease, filter .3s ease;
+}
+.ph:hover img{
+  transform: scale(1.1);
+  filter: contrast(1.05) saturate(1.06);
+}
+
+/* Lightbox : image max sans dépasser l'écran */
+.lightbox img{
+  max-width: min(94vw, 1100px);
+  max-height: 88vh;
+}
+
+/* Petites ajustements typo & espacements */
+.lead{ max-width: 56ch; }
+.stat div{ font-size: 28px; }  /* un peu moins gros = plus propre */
+
+/* === HERO plein écran (écran 1) === */
+:root{
+  --topbar-h: 60px;   /* si ta topbar change de hauteur, ajuste ici */
+  --frame: 42px;      /* bordure rose autour (déjà présente) */
+}
+
+/* Le hero occupe tout le viewport (moins topbar + cadre) */
+.hero{
+  min-height: calc(100svh - var(--topbar-h) - var(--frame));
+  display: grid;
+  align-items: center;
+  padding-top: clamp(8px, 2vh, 24px);
+  padding-bottom: clamp(28px, 6vh, 56px);
+}
+
+/* Empêche les ancres (#message, etc.) d’être cachées sous la topbar */
+.section{
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+
+/* Optionnel : un soupçon de « place » avant la section suivante
+   pour éviter qu’elle accroche le bas de l’écran sur certains mobiles */
+@media (max-width: 1100px){
+  .hero{ min-height: calc(100svh - var(--topbar-h) - 24px); }
+}
+
+
+/* ===== Scroll progress bar ===== */
+#scrollbar{
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg,#ff8aa1,#ffd9e3);
+  box-shadow: 0 0 12px rgba(255,138,161,.6);
+  z-index: 9999;
+  transition: width .15s linear;
+}
+
+/* ===== Reveal directions & zoom ===== */
+[data-anim]{opacity:0; transform: translateY(28px);}
+[data-anim].reveal{opacity:1; transform:none; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);}
+[data-anim="fade-left"]{transform: translateX(36px);}
+[data-anim="fade-right"]{transform: translateX(-36px);}
+[data-anim="zoom-in"]{transform: scale(.94);}
+[data-anim="zoom-in"].reveal{transform: none;}
+
+/* ===== Hero image clean size (déjà présent, réassure) ===== */
+.hero-ill{display:grid; align-items:center; justify-items:center; padding:clamp(8px,1.8vw,14px); max-width:min(560px,45vw); justify-self:end;}
+@media (max-width:1100px){ .hero-ill{ max-width:720px; justify-self:stretch;} }
+.hero-ill-inner{width:100%; aspect-ratio:4/5; border-radius:18px; overflow:hidden; position:relative; background:#fff;}
+.hero-ill-inner img{width:100%; height:100%; object-fit:cover; display:block;}
+
+/* ===== Gallery hover effects (3D + sheen + ken-burns) ===== */
+.ph{position:relative; aspect-ratio:1/1; border-radius:16px; overflow:hidden; background:#fff; border:1px solid rgba(0,0,0,.06); transform: translateY(16px); opacity:0;}
+.ph.reveal{opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease;}
+.ph img{width:100%; height:100%; object-fit:cover; transform: scale(1.04); transition: transform .8s ease;}
+.ph:hover img{transform: scale(1.12) rotate(.4deg);}
+.ph::after{ /* lueur en diagonale (sheen) */
+  content:""; position:absolute; inset:-40%; background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.45) 50%, transparent 65%);
+  transform: translateX(-120%); transition: transform .9s ease;
+}
+.ph:hover::after{ transform: translateX(120%); }
+
+/* 3D tilt */
+.hover3d{transform-style: preserve-3d; will-change: transform;}
+.hover3d:hover{box-shadow: 0 14px 50px rgba(0,0,0,.18);}
+
+/* ===== Magnetic buttons (subtil) ===== */
+.magnet{position:relative; transition: transform .08s ease;}
+
+/* ===== Hearts layer ===== */
+#hearts-layer{
+  position: fixed; inset:0; pointer-events:none; overflow:hidden; z-index: 9;
+}
+.heart{
+  position:absolute; font-size: 14px; color:#ff8aa1; filter: drop-shadow(0 3px 8px rgba(255,138,161,.4));
+  animation: heartFall var(--t,6s) linear forwards;
+  opacity:.85;
+}
+@keyframes heartFall{
+  from{ transform: translate(var(--x,0), -10%); }
+  to  { transform: translate(calc(var(--x,0) + 20px), 110%); opacity: .15; }
+}
+
+/* ===== Scroll hint bounce ===== */
+.scroll-hint{animation: hintBounce 2.6s ease-in-out infinite;}
+@keyframes hintBounce{
+  0%,100%{ transform: translateY(0) }
+  50%{ transform: translateY(6px) }
+}
+
+/* ===== Cards tilt pulse when revealed ===== */
+.tilt.reveal{animation: pop .5s ease;}
+@keyframes pop{0%{transform:scale(.98)} 100%{transform:scale(1)}}
+
+/* ===== Enveloppe flottante ===== */
+.envelope-btn{
+  position: fixed; right: 22px; bottom: 22px; z-index: 12;
+  width: 68px; height: 52px; border: 0; background: transparent; cursor: pointer;
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,.18));
+}
+.envelope-btn .env-body{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, #fff, #fff5f8);
+  border:1px solid rgba(0,0,0,.08); border-radius: 8px;
+}
+.envelope-btn .env-flap{
+  position:absolute; left:0; right:0; top:-2px; height:28px;
+  background: linear-gradient(180deg, #ffd9e3, #ffb7c8);
+  clip-path: polygon(0 0,100% 0,50% 100%);
+  border:1px solid rgba(0,0,0,.06); border-bottom:0; border-radius: 8px 8px 0 0;
+  transform-origin: 50% 0%; transition: transform .35s ease;
+}
+.envelope-btn .heart-dot{
+  position:absolute; left:50%; top:20px; transform: translateX(-50%);
+  font-size: 16px; color:#ff8aa1; animation: beat 1.4s ease-in-out infinite;
+}
+.envelope-btn:hover .env-flap{ transform: rotateX(30deg); }
+@keyframes beat{
+  0%,100%{ transform: translateX(-50%) scale(1) } 50%{ transform: translateX(-50%) scale(1.15) }
+}
+
+/* ===== Modale lettre ===== */
+.letter-modal{ position: fixed; inset:0; display:grid; place-items:center; z-index: 9990;
+  opacity:0; visibility:hidden; transition: opacity .25s ease; }
+.letter-modal.show{ opacity:1; visibility:visible; }
+.letter-backdrop{ position:absolute; inset:0; background: rgba(0,0,0,.45); }
+
+.letter-card{
+  position: relative; width: min(720px, 92vw); padding: 0; transform: translateY(14px) scale(.98);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.letter-modal.show .letter-card{ transform: none; }
+
+.letter-paper{
+  background: linear-gradient(180deg, #fff, #fffaf7);
+  border:1px solid rgba(0,0,0,.06); border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,.25);
+  padding: 22px 20px 18px;
+}
+.letter-close{
+  position:absolute; top:-12px; right:-12px; width:38px; height:38px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.6); background: rgba(255,255,255,.35); color:#fff; font-size:20px; cursor:pointer;
+  backdrop-filter: blur(6px);
+}
+.letter-paper h3{ margin: 4px 0 10px; font-size: 20px; }
+.letter-body{
+  white-space: pre-wrap; line-height: 1.6; font-size: 16px; color:#2b2b3a;
+  border-left: 3px solid #ffd9e3; padding-left: 12px; margin-bottom: 12px;
+}
+.letter-sign{ color:#7e7e92; font-size: 14px; text-align: right; }
+
+/* petite animation de papier */
+.letter-paper{ animation: unfold .45s ease both; transform-origin: top center; }
+@keyframes unfold{
+  0%{ transform: rotateX(-8deg) scale(.98); opacity:.0 }
+  100%{ transform: rotateX(0) scale(1); opacity:1 }
+}

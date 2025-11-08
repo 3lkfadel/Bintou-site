@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lettre à Ma petite tarte à la fraise ♡</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- Barre de progression du scroll -->
+  <div id="scrollbar"></div>
+
+  <div class="frame"></div>
+
+  <header class="topbar">
+    <div class="brand">Lettre a Ma Tarte a la fraise  <strong> ♡  </strong></div>
+  </header>
+
+  <!-- 1) HERO -->
+  <section id="hero" class="section hero" data-anim="fade-up">
+    <div class="hero-wrap">
+      <div class="hero-left card lift">
+        <h1 class="title">A Comme<br/>Amour</h1>
+        <p class="lead">
+          Je me souviens des beaux jours où toi et moi nous cachions du monde.
+          Chaque jour ici, un petit mot pour toi — et une douce promesse : nous
+          nous retrouvons bientôt.
+        </p>
+        <button class="btn magnet" id="toMessage">TALK</button>
+      </div>
+
+      <!-- Image hero recadrée propre -->
+      <div class="hero-ill card float">
+        <div class="hero-ill-inner">
+          <img src="images/image2.JPG" alt="Illustration couple" loading="eager" />
+        </div>
+        <div class="leaf leaf-a"></div>
+        <div class="leaf leaf-b"></div>
+        <div class="leaf leaf-c"></div>
+      </div>
+    </div>
+    <div class="scroll-hint">Fais défiler ↓</div>
+  </section>
+
+  <!-- 2) MESSAGE DU JOUR (statique via message.data.js) -->
+  <section id="message" class="section message card lift" data-anim="fade-up">
+    <div class="message-head">
+      <h2>Message du jour</h2>
+    </div>
+    <div id="dailyMsg" class="editable readonly" aria-live="polite"></div>
+  </section>
+
+  <!-- 3) DÉCOMPTE -->
+  <section id="countdown" class="section countdown card lift" data-anim="fade-right">
+    <div class="count-left">
+      <h2>On se retrouve le <span class="hl">4 mars 2026</span> 💞</h2>
+      <p class="muted">Encore <b id="dDays">—</b> jours (+ h/min/s)</p>
+      <div class="stat-grid">
+        <div class="stat tilt"><div id="cdDays">—</div><span>Jours</span></div>
+        <div class="stat tilt"><div id="cdHours">—</div><span>Heures</span></div>
+        <div class="stat tilt"><div id="cdMinutes">—</div><span>Minutes</span></div>
+        <div class="stat tilt"><div id="cdSeconds">—</div><span>Secondes</span></div>
+      </div>
+    </div>
+    <div class="count-right">
+      <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+      <div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div>
+    </div>
+  </section>
+
+  <!-- 4) GALERIE -->
+  <section id="galerie" class="section gallery card lift" data-anim="zoom-in">
+    <h2>Notre petite galerie</h2>
+    <div class="grid">
+      <figure class="ph hover3d"><img src="images/image2.JPG" alt="Souvenir 1" loading="lazy" /></figure>
+      <figure class="ph hover3d"><img src="images/image3.JPG" alt="Souvenir 2" loading="lazy" /></figure>
+      <figure class="ph hover3d"><img src="images/image4.JPG" alt="Souvenir 3" loading="lazy" /></figure>
+      <figure class="ph hover3d"><img src="images/image5.JPG" alt="Souvenir 4" loading="lazy" /></figure>
+    </div>
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lb-close" id="lbClose">×</button>
+      <img id="lbImg" alt="prévisualisation" />
+    </div>
+  </section>
+
+  <!-- 5) MES EXCUSES -->
+  <section id="excuses" class="section excuses card lift" data-anim="fade-left">
+    <div class="excuses-wrap">
+      <div class="ex-left">
+        <h2>Mes excuses du cœur</h2>
+        <p class="muted">Quand je te  blesse sans le vouloir, je veux toujours revenir vers toi etre le meilleure pour toi </p>
+        
+      </div>
+      <div class="ex-right">
+        <div class="note n1 tilt">Pardon pour mes maladresses. Merci de me laisser apprendre. 🫶</div>
+        <div class="note n2 tilt">Je t’écoute vraiment, et je veux faire mieux.</div>
+        <div class="note n3 tilt">Je te choisis aujourd’hui, demain, après-demain. 💗</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Fait Par BÉBOU POUR SON CHOU A LA CRÈME • <span id="year"></span></span>
+  </footer>
+
+  <!-- Couche de cœurs animés -->
+  <div id="hearts-layer" aria-hidden="true"></div>
+
+  <script src="assets/js/message.data.js"></script>
+  <!-- Bouton enveloppe flottant -->
+<button class="envelope-btn" id="openLetter" aria-label="Ouvrir la lettre d'amour">
+  <span class="env-body"></span>
+  <span class="env-flap"></span>
+  <span class="heart-dot">❤</span>
+</button>
+
+<!-- Modale de lettre -->
+<div class="letter-modal" id="letterModal" aria-hidden="true" role="dialog" aria-label="Lettre pour toi">
+  <div class="letter-backdrop" id="letterBackdrop"></div>
+  <div class="letter-card" role="document">
+    <button class="letter-close" id="letterClose" aria-label="Fermer">×</button>
+    <div class="letter-paper">
+      <h3>Lettre pour toi ♡</h3>
+      <div class="letter-body">
+        JE SAIS QUE C’EST PAS FACILE ACTULLMENT TU EST UEN PERSONNE INCROYABLE TU AFFRONTE TELLEMENT DE CHOSE DANS LA VIE ACTULLEMENT ET TU RESTE FORTE TU CONTINUE D’AVANCER ET TU GARDE LE SOURRIRE QU’IL ARRIVE TU ES L’UNE DES PERSONNE LES PLUS FORTE QUE JE CONNSIASSENT GENTILN AIMABLE ET DETERMINÉ ET MERCI POUR TOUT CA MERCI A TOI D’ETRE TOI ET DE NOUS RENDRE HEUREUX ME RENDRE HEUREUX
+      </div>
+      <div class="letter-sign">— De moi, pour toi 💗</div>
+    </div>
+  </div>
+</div>
+
+  <script src="assets/js/script.js"></script>
+
+</body>
+</html>
